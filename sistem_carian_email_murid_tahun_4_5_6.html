@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8">
+  <title>Sistem Carian Email Murid</title>
+  <style>
+    body { font-family: Arial; background:#f5f5f5; text-align:center; padding:40px; }
+    .box { background:white; padding:30px; border-radius:12px; max-width:500px; margin:auto; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+    input { width:80%; padding:10px; font-size:16px; margin-top:10px; }
+    button { padding:10px 20px; margin-top:15px; font-size:16px; cursor:pointer; }
+    .result { margin-top:20px; text-align:left; }
+  </style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Sistem Carian Email Murid</h2>
+  <p>Masukkan Nama Penuh Murid</p>
+  <input type="text" id="nama" placeholder="Contoh: Ali bin Abu">
+  <br>
+  <button onclick="cariData()">Cari</button>
+
+  <div class="result" id="output"></div>
+</div>
+
+<script>
+// DATA MURID (contoh - cikgu boleh tambah semua data nanti)
+const dataMurid = [
+  {nama: "ALI BIN ABU", email: "m-123@moe-dl.edu.my", password: "123456", kelas: "Tahun 4"},
+  {nama: "SITI BINTI AHMAD", email: "m-456@moe-dl.edu.my", password: "654321", kelas: "Tahun 5"},
+  {nama: "AHMAD BIN ALI", email: "m-789@moe-dl.edu.my", password: "111222", kelas: "Tahun 6"}
+];
+
+function cariData(){
+  const input = document.getElementById("nama").value.toUpperCase();
+  const result = dataMurid.find(m => m.nama === input);
+
+  if(result){
+    document.getElementById("output").innerHTML = `
+      <p><b>Email:</b> ${result.email}</p>
+      <p><b>Password:</b> ${result.password}</p>
+      <p><b>Kelas:</b> ${result.kelas}</p>
+    `;
+  } else {
+    document.getElementById("output").innerHTML = "<p>Data tidak dijumpai</p>";
+  }
+}
+</script>
+
+</body>
+</html>
